@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Climate Combat.CSharp", "Climate Combat.CSharp.csproj", "{0115D3AA-6C89-1F1C-1320-2907D8797DC7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0115D3AA-6C89-1F1C-1320-2907D8797DC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0115D3AA-6C89-1F1C-1320-2907D8797DC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0115D3AA-6C89-1F1C-1320-2907D8797DC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0115D3AA-6C89-1F1C-1320-2907D8797DC7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
