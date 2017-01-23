@@ -221,4 +221,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04f7bb81724c6c489528696686bfc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationAngle: 10.366
+  rotationAngle: 0

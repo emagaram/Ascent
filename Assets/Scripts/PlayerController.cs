@@ -121,6 +121,10 @@ public class PlayerController : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.Space) && Input.GetAxisRaw("Horizontal") != 0)
                     {
                         WallJump();
+                        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+                        {
+                            animator.Play("Jump", 0, 0);
+                        }
                     }
                 }
             }
@@ -278,14 +282,11 @@ public class PlayerController : MonoBehaviour
         else
         {
             i = Mathf.Sign(transform.localScale.x) * -wallJumpLean;
+            Flip();
         }
         rb.velocity = new Vector2(0f, 0f);
         rb.AddForce(new Vector2(i, jumpForce));
         didWallJump = false;
-        if (!attachedToLadder)
-        {
-            Flip();
-        }
 
         }
 

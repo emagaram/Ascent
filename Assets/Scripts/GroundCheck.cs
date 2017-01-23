@@ -26,7 +26,7 @@ public class GroundCheck : MonoBehaviour
             {
                 player.onIce = true;
             }
-            else if (coll.gameObject.GetComponent<Ramp>() != null)
+            if (coll.gameObject.GetComponent<Ramp>() != null)
             {
                 player.currentRamp = coll.GetComponent<Ramp>();
             }
@@ -43,7 +43,7 @@ public class GroundCheck : MonoBehaviour
             {
                 player.onIce = true;
             }
-            else if(coll.gameObject.GetComponent<Ramp>()!=null)
+            if(coll.gameObject.GetComponent<Ramp>()!=null)
             {
                 player.currentRamp = coll.GetComponent<Ramp>();
             }
@@ -59,7 +59,7 @@ public class GroundCheck : MonoBehaviour
             {
                 player.onIce = false;
             }
-            else if (coll.gameObject.GetComponent<Ramp>() != null)
+            if (coll.gameObject.GetComponent<Ramp>() != null)
             {
                 player.currentRamp = null;
             }
