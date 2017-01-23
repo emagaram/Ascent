@@ -62,6 +62,20 @@ public class PlayerController : MonoBehaviour
     // INCREASE MAX SPEED FOR ICE
     void Update()
     {
+        animator.SetBool("attachedToLadder", attachedToLadder);
+        if (attachedToLadder)
+        {
+            if(climbSpeed == 0)
+            {
+                inputDoesntMatter = true;
+                animator.SetFloat("Direction", 0);
+            }
+            else
+            {
+                animator.SetFloat("Direction", Mathf.Abs(Input.GetAxisRaw("Vertical")));
+            }
+            
+        }
         if (!cantChange)
         {
             if (currentRamp != null)
@@ -113,9 +127,11 @@ public class PlayerController : MonoBehaviour
                 if (grounded && Input.GetAxis("Vertical") == -1)
                 {
                     attachedToLadder = false;
+                    animator.SetBool("attachedToLadder", attachedToLadder);
                 }
                 else if (attachedToLadder)
                 {
+                    animator.SetBool("jumped", false);
                     transform.position = new Vector2(ladderTransform.position.x, transform.position.y);
                     rb.velocity = new Vector2(0, Input.GetAxisRaw("Vertical") * climbSpeed);
                     if (Input.GetKeyDown(KeyCode.Space) && Input.GetAxisRaw("Horizontal") != 0)
@@ -276,7 +292,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(WallJumpTimer());
         if (attachedToLadder)
         {
-            i = Mathf.Sign(transform.localScale.x) * wallJumpLean;
+            i = Mathf.Sign(Input.GetAxisRaw("Horizontal")) * wallJumpLean;
             attachedToLadder = false;
         }
         else
