@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         gravityScale = rb.gravityScale;
         gc = GetComponentInChildren<GroundCheck>();
-        originalOffset = GetComponent<BoxCollider2D>().offset;
+        originalOffset = GetComponent<PolygonCollider2D>().offset;
     }
 
     void Start()
@@ -57,11 +57,19 @@ public class PlayerController : MonoBehaviour
     IEnumerator WaitToRevertOffset(float time)
     {
         yield return new WaitForSeconds(time);
-        GetComponent<BoxCollider2D>().offset = originalOffset;
+        GetComponent<PolygonCollider2D>().offset = originalOffset;
     }
     // INCREASE MAX SPEED FOR ICE
     void Update()
     {
+        if(currentRamp!=null && Input.GetAxisRaw("Horizontal")==0 && !onIce && !offTheIce && !Input.GetKeyDown(KeyCode.Space) && !didJump)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
         animator.SetBool("attachedToLadder", attachedToLadder);
         if (attachedToLadder)
         {
@@ -92,7 +100,7 @@ public class PlayerController : MonoBehaviour
             if (touchingWall && !grounded && Input.GetAxisRaw("Horizontal") != 0)
             {
                 animator.SetBool("wallSliding", true);
-                GetComponent<BoxCollider2D>().offset = new Vector2(originalOffset.x - 0.05f, originalOffset.y);
+                GetComponent<PolygonCollider2D>().offset = new Vector2(originalOffset.x - 0.05f, originalOffset.y);
             }
             else
             {
