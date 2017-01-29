@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = GlobalControl.Instance.playerLocation;
     }
-
     IEnumerator WaitToRevertOffset(float time)
     {
         yield return new WaitForSeconds(time);
@@ -62,6 +61,9 @@ public class PlayerController : MonoBehaviour
     // INCREASE MAX SPEED FOR ICE
     void Update()
     {
+
+        // To control corner hanging
+
         if(currentRamp!=null && Input.GetAxisRaw("Horizontal")==0 && !onIce && !offTheIce && !Input.GetKeyDown(KeyCode.Space) && !didJump)
         {
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -99,6 +101,10 @@ public class PlayerController : MonoBehaviour
         {
             if (touchingWall && !grounded && Input.GetAxisRaw("Horizontal") != 0)
             {
+                if (rb.velocity.magnitude < 0.02f&&animator.GetBool("wallSliding")==true)
+                {
+                    rb.velocity = new Vector2(0, rb.velocity.y);
+                }
                 animator.SetBool("wallSliding", true);
                 GetComponent<PolygonCollider2D>().offset = new Vector2(originalOffset.x - 0.05f, originalOffset.y);
             }
@@ -167,21 +173,6 @@ public class PlayerController : MonoBehaviour
                 transform.position = new Vector2(rightSideLimit, transform.position.y);
             }
         }
-        Ray ray = new Ray();
-        RaycastHit hit;
-        Vector3 axis;
-        float angle = 0;
-        Debug.Log(angle);
-
-
-        ray.origin = transform.position;
-        ray.direction = -transform.up;
-
-        Physics.Raycast(ray, out hit);
-
-        axis = Vector3.Cross(-transform.up, -hit.normal);
-        angle = Mathf.Atan2(Vector3.Magnitude(axis), Vector3.Dot(-transform.up, -hit.normal));
-        transform.RotateAround(transform.position, axis, angle);
     }
 
     void FixedUpdate()
@@ -295,7 +286,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(WaitToRevertOffset(1f));
         }
         float i;
-        StartCoroutine(WaitUntilTraveled(1f));
+        StartCoroutine(WaitUntilTraveledHalfJump(1f));
         StartCoroutine(DontCareTimer(0.4f));
         StartCoroutine(WallJumpTimer());
         if (attachedToLadder)
@@ -326,7 +317,7 @@ public class PlayerController : MonoBehaviour
         inputDoesntMatter = false;
     }
 
-    IEnumerator WaitUntilTraveled(float distance)
+    IEnumerator WaitUntilTraveledHalfJump(float distance)
     {
         isHalfWallJumping = true;
         float xPos = transform.position.x;
