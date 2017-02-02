@@ -101,6 +101,7 @@
     <Compile Include="Assets\Scripts\Ramp.cs" />
     <Compile Include="Assets\Scripts\SnowballShooter.cs" />
     <Compile Include="Assets\Scripts\SnowballSpawner.cs" />
+    <Compile Include="Assets\Scripts\SpeedController.cs" />
     <Compile Include="Assets\Scripts\SpeedRamp.cs" />
     <Compile Include="Assets\Scripts\Triangulator.cs" />
     <Compile Include="Assets\Scripts\WallCheck.cs" />
