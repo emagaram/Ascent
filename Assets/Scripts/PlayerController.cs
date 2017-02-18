@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        Time.timeScale = 1f;
         animator = GetComponent<Animator>();
         Physics.gravity = new Vector3(0, -1, 0);
         rb = GetComponent<Rigidbody2D>();
@@ -61,6 +62,11 @@ public class PlayerController : MonoBehaviour
     // INCREASE MAX SPEED FOR ICE
     void Update()
     {
+        if (touchingWall)
+        {
+            animator.SetBool("jumped", false);
+        }
+        animator.SetBool("touchingWall", touchingWall);
 
         // To control corner hanging
 
@@ -245,7 +251,7 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = new Vector2(0f, rb.velocity.y);
             }
-            if (!inputDoesntMatter)
+            if (!inputDoesntMatter || (inputDoesntMatter && climbSpeed == 0))
             {
                 if (Input.GetAxisRaw("Horizontal") > 0 && !facingRight)
                 {
