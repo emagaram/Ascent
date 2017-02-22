@@ -33,17 +33,16 @@ public class PlayerController : MonoBehaviour
     public bool onIce = false;
     public Transform groundCheck;
     public SpeedRamp sr;
-    public LayerMask whatIsEnemy;
-    public LayerMask whatIsWall;
     public Transform ladderTransform;
     private Rigidbody2D rb;
-    public Vector2 originalOffset;
+    private Vector2 originalOffset;
+    private IEnumerator dontCareRoutine;
 
     void Awake()
     {
+        dontCareRoutine = DontCareTimer(0.4f);
         Time.timeScale = 1f;
         animator = GetComponent<Animator>();
-        Physics.gravity = new Vector3(0, -1, 0);
         rb = GetComponent<Rigidbody2D>();
         gravityScale = rb.gravityScale;
         gc = GetComponentInChildren<GroundCheck>();
@@ -62,6 +61,12 @@ public class PlayerController : MonoBehaviour
     // INCREASE MAX SPEED FOR ICE
     void Update()
     {
+        Debug.Log(rb.velocity.y);
+        if (isDead)
+        {
+           rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+           rb.velocity = new Vector2(0, rb.velocity.y);
+        }
         if (touchingWall)
         {
             animator.SetBool("jumped", false);
@@ -74,7 +79,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
-        else
+        else if(!isDead)
         {
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
@@ -116,6 +121,10 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                if (GetComponent<PolygonCollider2D>().offset != originalOffset)
+                {
+                    GetComponent<PolygonCollider2D>().offset = originalOffset;
+                }
                 animator.SetBool("wallSliding", false);
             }
             if (onIce || offTheIce)
@@ -144,8 +153,9 @@ public class PlayerController : MonoBehaviour
                     attachedToLadder = true;
                     rb.gravityScale = 0;
                 }
-                if (grounded && Input.GetAxis("Vertical") == -1)
+                if (grounded && Input.GetAxisRaw("Vertical") == -1)
                 {
+                    rb.gravityScale = gravityScale;
                     attachedToLadder = false;
                     animator.SetBool("attachedToLadder", attachedToLadder);
                 }
@@ -170,13 +180,15 @@ public class PlayerController : MonoBehaviour
                 rb.gravityScale = gravityScale;
             }
 
-            if (transform.position.x < leftSideLimit && Input.GetAxisRaw("Horizontal") == -1)
+            if (transform.position.x < leftSideLimit)
             {
                 transform.position = new Vector2(leftSideLimit, transform.position.y);
+                rb.velocity = new Vector2(0,rb.velocity.y);
             }
-            else if (transform.position.x > rightSideLimit && Input.GetAxisRaw("Horizontal") == 1)
+            else if (transform.position.x > rightSideLimit)
             {
                 transform.position = new Vector2(rightSideLimit, transform.position.y);
+                rb.velocity = new Vector2(0, rb.velocity.y);
             }
         }
     }
@@ -206,7 +218,7 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("isMoving", false);
             }
 
-            if (grounded)
+            if (grounded && !didJump)
             {
                 animator.SetBool("grounded", true);
                 animator.SetBool("jumped", false);
@@ -287,13 +299,12 @@ public class PlayerController : MonoBehaviour
     void WallJump()
     {
         animator.SetBool("jumped", true);
-        if (!attachedToLadder)
-        {
-            StartCoroutine(WaitToRevertOffset(1f));
-        }
+        StartCoroutine(WaitToRevertOffset(1f));
         float i;
         StartCoroutine(WaitUntilTraveledHalfJump(1f));
-        StartCoroutine(DontCareTimer(0.4f));
+        StopCoroutine(dontCareRoutine);
+        dontCareRoutine = DontCareTimer(0.4f);
+        StartCoroutine(dontCareRoutine);
         StartCoroutine(WallJumpTimer());
         if (attachedToLadder)
         {

@@ -19,7 +19,7 @@ public class WallCheck : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag != "Checkpoint" && coll.gameObject.tag!="Ladder")
+        if (coll.gameObject.tag != "Checkpoint" && coll.gameObject.tag!="Ladder" && coll.gameObject.tag != "Trigger")
         {
             player.touchingWall = true;
         }
@@ -28,7 +28,7 @@ public class WallCheck : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D coll)
     {
-        if (coll.gameObject.tag != "Checkpoint" && coll.gameObject.tag != "Ladder")
+        if (coll.gameObject.tag != "Checkpoint" && coll.gameObject.tag != "Ladder" && coll.gameObject.tag != "Trigger")
         {
             player.touchingWall = true;
         }
@@ -36,7 +36,7 @@ public class WallCheck : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D coll)
     {
-        if (coll.gameObject.tag != "Checkpoint" && coll.gameObject.tag != "Ladder")
+        if (coll.gameObject.tag != "Checkpoint" && coll.gameObject.tag != "Ladder" && coll.gameObject.tag != "Trigger")
         {
             player.touchingWall = false;
         }

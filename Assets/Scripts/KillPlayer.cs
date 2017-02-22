@@ -10,24 +10,9 @@ public class KillPlayer : MonoBehaviour {
 		levelManager = FindObjectOfType<LevelManager> ();
         
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	void OnCollisionEnter2D(Collision2D other){
 		if (other.gameObject.tag == "Player" && levelManager!=null) {
-            StartCoroutine(WaitBeforeDeath(1f));
-		}
+            StartCoroutine(levelManager.RespawnPlayer(1));
+        }
 	}
-
-    IEnumerator WaitBeforeDeath(float time)
-    {
-        FindObjectOfType<PlayerController>().animator.Play("Death");
-        FindObjectOfType<PlayerController>().isDead = true;
-        yield return new WaitForSeconds(time);
-        levelManager.RespawnPlayer();
-        
-    }
 }

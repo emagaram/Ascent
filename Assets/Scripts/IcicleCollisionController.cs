@@ -15,18 +15,14 @@ public class IcicleCollisionController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (deadly && other.gameObject.name == "Player" && levelManager != null)
+        if (deadly && other.gameObject.tag == "Player" && levelManager != null)
         {
-            levelManager.RespawnPlayer();
+            StartCoroutine(levelManager.RespawnPlayer(1));
+            gameObject.transform.localScale = new Vector3(0, 0, 0);
         }
-        //if(other.gameObject.name == "Ground" || other.gameObject.tag == "Ice")
-        //{
-        //    Destroy(gameObject);
-        //}
         if (other.gameObject.tag != "Player")
         {
-            gameObject.SetActive(false);
-            Destroy(gameObject);
+            gameObject.transform.localScale = new Vector3(0, 0, 0);
         }
     }
 }

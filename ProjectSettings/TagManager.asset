@@ -9,6 +9,7 @@ TagManager:
   - Checkpoint
   - Ramp
   - Ladder
+  - Trigger
   layers:
   - Default
   - TransparentFX

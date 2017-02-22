@@ -15,11 +15,17 @@ public class LevelManager : MonoBehaviour {
         GlobalControl.Instance.playerLocation = new Vector2(currentCheckpoint.transform.position.x, currentCheckpoint.transform.position.y);
     }
 
-	public void RespawnPlayer() {
-		Debug.Log ("Player respawned");
-        player.attachedToLadder = false;
+	public IEnumerator RespawnPlayer(float time) {
+        Debug.Log("STARTED");
+        player.animator.Play("Death");
+        player.isDead = true;
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        Debug.Log("Player respawned");
+        player.attachedToLadder = false;
+        yield return new WaitForSeconds(time);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Everest");
+        
     }
 
 }

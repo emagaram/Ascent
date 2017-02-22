@@ -19,7 +19,7 @@ public class GroundCheck : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag != "Checkpoint" && coll.gameObject.tag != "Ladder")
+        if (coll.gameObject.tag != "Checkpoint" && coll.gameObject.tag != "Ladder" && coll.gameObject.tag != "Trigger")
         {
             player.grounded = true;
             if(coll.gameObject.tag == "Ice")
@@ -36,7 +36,7 @@ public class GroundCheck : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D coll)
     {
-        if (coll.gameObject.tag != "Checkpoint" && coll.gameObject.tag != "Ladder")
+        if (coll.gameObject.tag != "Checkpoint" && coll.gameObject.tag != "Ladder" && coll.gameObject.tag != "Trigger")
         {
             player.grounded = true;
             if (coll.gameObject.tag == "Ice")
@@ -52,7 +52,7 @@ public class GroundCheck : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D coll)
     {
-        if (coll.gameObject.tag != "Checkpoint" && coll.gameObject.tag != "Ladder")
+        if (coll.gameObject.tag != "Checkpoint" && coll.gameObject.tag != "Ladder" && coll.gameObject.tag != "Trigger")
         {
             player.grounded = false;
             if (coll.gameObject.tag == "Ice")
