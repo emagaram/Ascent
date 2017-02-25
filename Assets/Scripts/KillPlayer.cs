@@ -5,7 +5,6 @@ public class KillPlayer : MonoBehaviour {
 
 	public LevelManager levelManager;
 
-	// Use this for initialization
 	void Start () {
 		levelManager = FindObjectOfType<LevelManager> ();
         
@@ -15,4 +14,11 @@ public class KillPlayer : MonoBehaviour {
             StartCoroutine(levelManager.RespawnPlayer(1));
         }
 	}
+    void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player" && levelManager != null)
+        {
+            StartCoroutine(levelManager.RespawnPlayer(1));
+        }
+    }
 }

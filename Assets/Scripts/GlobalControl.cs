@@ -5,6 +5,8 @@ public class GlobalControl : MonoBehaviour
 {
     public static GlobalControl Instance;
     public Vector2 playerLocation;
+    public GameObject checkPoint;
+    public float timeAtRestart;
     void Awake()
     {
         if (Instance == null)

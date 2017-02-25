@@ -15,14 +15,17 @@ public class IcicleCollisionController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (deadly && other.gameObject.tag == "Player" && levelManager != null)
-        {
-            StartCoroutine(levelManager.RespawnPlayer(1));
-            gameObject.transform.localScale = new Vector3(0, 0, 0);
-        }
         if (other.gameObject.tag != "Player")
         {
-            gameObject.transform.localScale = new Vector3(0, 0, 0);
+            if(GetComponentInParent<IcicleFallScript>().gameObject != gameObject)
+            {
+                Destroy(GetComponentInParent<IcicleFallScript>().gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            } 
+           
         }
     }
 }

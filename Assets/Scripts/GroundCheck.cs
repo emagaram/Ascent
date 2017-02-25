@@ -19,10 +19,14 @@ public class GroundCheck : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
+        if (coll.GetComponent<KillPlayer>())
+        {
+            player.isDead = true;
+        }
         if (coll.gameObject.tag != "Checkpoint" && coll.gameObject.tag != "Ladder" && coll.gameObject.tag != "Trigger")
         {
             player.grounded = true;
-            if(coll.gameObject.tag == "Ice")
+            if (coll.gameObject.tag == "Ice")
             {
                 player.onIce = true;
             }
@@ -36,6 +40,10 @@ public class GroundCheck : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D coll)
     {
+        if (coll.GetComponent<KillPlayer>())
+        {
+            player.isDead = true;
+        }
         if (coll.gameObject.tag != "Checkpoint" && coll.gameObject.tag != "Ladder" && coll.gameObject.tag != "Trigger")
         {
             player.grounded = true;
@@ -43,7 +51,7 @@ public class GroundCheck : MonoBehaviour
             {
                 player.onIce = true;
             }
-            if(coll.gameObject.GetComponent<Ramp>()!=null)
+            if (coll.gameObject.GetComponent<Ramp>() != null)
             {
                 player.currentRamp = coll.GetComponent<Ramp>();
             }

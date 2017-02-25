@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public bool grounded = false;
     public bool touchingWall = false;
     private bool isWallJumping = false;
-    private bool inputDoesntMatter = false;
+    public bool inputDoesntMatter = false;
     private bool isHalfWallJumping = false;
     public bool offTheIce = false;
     public bool onIce = false;
@@ -61,12 +61,6 @@ public class PlayerController : MonoBehaviour
     // INCREASE MAX SPEED FOR ICE
     void Update()
     {
-        Debug.Log(rb.velocity.y);
-        if (isDead)
-        {
-           rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-           rb.velocity = new Vector2(0, rb.velocity.y);
-        }
         if (touchingWall)
         {
             animator.SetBool("jumped", false);
@@ -75,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
         // To control corner hanging
 
-        if(currentRamp!=null && Input.GetAxisRaw("Horizontal")==0 && !onIce && !offTheIce && !Input.GetKeyDown(KeyCode.Space) && !didJump)
+        if(Input.GetAxisRaw("Horizontal")==0 && !onIce && !offTheIce && !Input.GetKeyDown(KeyCode.Space) && !didJump && grounded && !isWallJumping && !animator.GetBool("wallSliding") && !isDead)
         {
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
@@ -86,6 +80,12 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("attachedToLadder", attachedToLadder);
         if (attachedToLadder)
         {
+            Vector3 s = transform.localScale;
+            s.x = Mathf.Abs(s.x) * Mathf.Sign(Input.GetAxisRaw("Horizontal"));
+            if (Input.GetAxisRaw("Vertical") == 1)
+            {
+                grounded = false;
+            }
             if(climbSpeed == 0)
             {
                 inputDoesntMatter = true;
@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
         {
             if (touchingWall && !grounded && Input.GetAxisRaw("Horizontal") != 0)
             {
-                if (rb.velocity.magnitude < 0.02f&&animator.GetBool("wallSliding")==true)
+                if (rb.velocity.magnitude < 0.02f&&animator.GetBool("wallSliding"))
                 {
                     rb.velocity = new Vector2(0, rb.velocity.y);
                 }

@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114000011482999492}
   - component: {fileID: 114053414749492862}
   - component: {fileID: 114645002887769870}
+  - component: {fileID: 114990840559307304}
   m_Layer: 0
   m_Name: Snowball
   m_TagString: Untagged
@@ -85,7 +86,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010571128894}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49133b2991f79704caaf0646d9264e09, type: 3}
   m_Name: 
@@ -115,6 +116,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   limit: -40
+--- !u!114 &114990840559307304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010571128894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6516e990d6f22434aaf825de9cb9ad78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212000012291432570
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -146,7 +158,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ac17ff4aa9925da46a9fcd0872af2ac7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a4e380c9332c1c540a07d098930c622c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

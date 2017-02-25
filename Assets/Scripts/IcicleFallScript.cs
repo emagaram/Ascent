@@ -6,8 +6,9 @@ public class IcicleFallScript : MonoBehaviour {
     public float waitTime = 0f;
     // Use this for initialization
     void Start () {
-        icicle = GetComponent<Rigidbody2D>();	
-	}
+        icicle = GetComponent<Rigidbody2D>();
+        icicle.isKinematic = true;
+    }
 	
 	// Update is called once per frame
 	void Update () {

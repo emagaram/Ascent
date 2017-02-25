@@ -1,31 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LevelManager : MonoBehaviour {
+public class LevelManager : MonoBehaviour
+{
+    public float timeAtRestart;
     public GameObject currentCheckpoint;
-	private PlayerController player;
+    private PlayerController player;
 
-	// Use this for initialization
-	void Start () {
-		player = FindObjectOfType<PlayerController> ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        GlobalControl.Instance.playerLocation = new Vector2(currentCheckpoint.transform.position.x, currentCheckpoint.transform.position.y);
+    // Use this for initialization
+    void Start()
+    {
+        player = FindObjectOfType<PlayerController>();
     }
 
-	public IEnumerator RespawnPlayer(float time) {
-        Debug.Log("STARTED");
+    void Update()
+    {
+        if (currentCheckpoint!=null)
+        {
+            GlobalControl.Instance.playerLocation = new Vector2(currentCheckpoint.transform.position.x+0.5f, currentCheckpoint.transform.position.y + 3f);
+        }
+    }
+
+    public IEnumerator RespawnPlayer(float time)
+    {
         player.animator.Play("Death");
         player.isDead = true;
         player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
-        player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        Debug.Log("Player respawned");
+        player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, player.GetComponent<Rigidbody2D>().velocity.y);
         player.attachedToLadder = false;
+        player.inputDoesntMatter = true;
         yield return new WaitForSeconds(time);
+        GlobalControl.Instance.timeAtRestart = Time.time;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Everest");
-        
+
     }
 
 }
