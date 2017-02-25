@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
+        
         if (currentCheckpoint!=null)
         {
             GlobalControl.Instance.playerLocation = new Vector2(currentCheckpoint.transform.position.x+0.5f, currentCheckpoint.transform.position.y + 3f);

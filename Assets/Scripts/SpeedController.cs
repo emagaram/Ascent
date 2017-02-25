@@ -6,6 +6,8 @@ public class SpeedController : MonoBehaviour
 {
     public float maxSpeed;
     private Rigidbody2D rb;
+    public Vector2 myVelocity;
+    public bool useVelocity = false;
     // Use this for initialization
     void Start()
     {
@@ -15,6 +17,13 @@ public class SpeedController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (useVelocity == true)
+        {
+            rb.velocity = myVelocity;
+            useVelocity = false;
+            rb.AddTorque(-2000, ForceMode2D.Impulse);
+        }
+        
         if (rb.velocity.magnitude > maxSpeed)
         {
             rb.velocity = rb.velocity.normalized * maxSpeed;

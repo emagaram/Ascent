@@ -80,8 +80,19 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("attachedToLadder", attachedToLadder);
         if (attachedToLadder)
         {
-            Vector3 s = transform.localScale;
-            s.x = Mathf.Abs(s.x) * Mathf.Sign(Input.GetAxisRaw("Horizontal"));
+            
+            if (Input.GetAxisRaw("Horizontal") != 0)
+            {
+                if (Input.GetAxisRaw("Horizontal") > 0 && !facingRight)
+                {
+                    Flip();
+                }
+
+                else if (Input.GetAxisRaw("Horizontal") < 0 && facingRight)
+                {
+                    Flip();
+                }
+            }
             if (Input.GetAxisRaw("Vertical") == 1)
             {
                 grounded = false;
