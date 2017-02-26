@@ -19,6 +19,10 @@ public class GroundCheck : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
+        if (coll.gameObject == null)
+        {
+            player.grounded = false;
+        }
         if (coll.GetComponent<KillPlayer>())
         {
             player.isDead = true;
@@ -40,6 +44,10 @@ public class GroundCheck : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D coll)
     {
+        if (coll.gameObject == null)
+        {
+            player.grounded = false;
+        }
         if (coll.GetComponent<KillPlayer>())
         {
             player.isDead = true;
