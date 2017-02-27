@@ -110,6 +110,7 @@
     <Compile Include="Assets\Scripts\StartCutScene.cs" />
     <Compile Include="Assets\Scripts\TriggerKill.cs" />
     <Compile Include="Assets\Scripts\WallCheck.cs" />
+    <Compile Include="Assets\SnatchPlayer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
