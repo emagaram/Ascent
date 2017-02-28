@@ -48,10 +48,15 @@ public class PlayerController : MonoBehaviour
         gc = GetComponentInChildren<GroundCheck>();
         originalOffset = GetComponent<PolygonCollider2D>().offset;
     }
-
+    IEnumerator afterStart()
+    {
+        yield return new WaitForEndOfFrame();
+        FindObjectOfType<RiseWithPlayer>().gameObject.transform.position = FindObjectOfType<RiseWithPlayer>().calculateDesiredVec();
+    }
     void Start()
     {
         transform.position = GlobalControl.Instance.playerLocation;
+        StartCoroutine(afterStart());
     }
     IEnumerator WaitToRevertOffset(float time)
     {

@@ -1,0 +1,69 @@
+Initialize engine version: 5.5.0f3 (38b4efef76f0)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [igdumdim32.dll 20.19.15.4549]
+    Renderer: Intel(R) HD Graphics 5500
+    Vendor:   Intel
+    VRAM:     2111 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 INTZ=1 NULL=1 RESZ=1 SlowINTZ=0 ATOC=1 BC4=1 BC5=1
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Public\Documents\Unity Projects\Everest\Builds\Build10CLOSSSE_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Public\Documents\Unity Projects\Everest\Builds\Build10CLOSSSE_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Public\Documents\Unity Projects\Everest\Builds\Build10CLOSSSE_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Public\Documents\Unity Projects\Everest\Builds\Build10CLOSSSE_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Public\Documents\Unity Projects\Everest\Builds\Build10CLOSSSE_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Public\Documents\Unity Projects\Everest\Builds\Build10CLOSSSE_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Public\Documents\Unity Projects\Everest\Builds\Build10CLOSSSE_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Public\Documents\Unity Projects\Everest\Builds\Build10CLOSSSE_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Public\Documents\Unity Projects\Everest\Builds\Build10CLOSSSE_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\Public\Documents\Unity Projects\Everest\Builds\Build10CLOSSSE_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\Public\Documents\Unity Projects\Everest\Builds\Build10CLOSSSE_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\Public\Documents\Unity Projects\Everest\Builds\Build10CLOSSSE_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.031 seconds
+Platform assembly: C:\Users\Public\Documents\Unity Projects\Everest\Builds\Build10CLOSSSE_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Public\Documents\Unity Projects\Everest\Builds\Build10CLOSSSE_Data\Managed\System.dll (this message is harmless)
+desktop: 2560x1440 60Hz; virtual: 2560x1440 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 2.837913 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+WARNING: BC6H/BC7 texture format is not supported, decompressing texture
+WARNING: BC6H/BC7 texture format is not supported, decompressing texture
+UnloadTime: 8.850730 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 2674.
+Total: 1.122592 ms (FindLiveObjects: 0.238203 ms CreateObjectMapping: 0.094083 ms MarkObjects: 0.776619 ms  DeleteObjects: 0.012829 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.565780 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 2753.
+Total: 1.059727 ms (FindLiveObjects: 0.238203 ms CreateObjectMapping: 0.085103 ms MarkObjects: 0.724446 ms  DeleteObjects: 0.011119 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.318307 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 2753.
+Total: 1.192727 ms (FindLiveObjects: 0.232643 ms CreateObjectMapping: 0.092800 ms MarkObjects: 0.853170 ms  DeleteObjects: 0.012829 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.650456 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 2753.
+Total: 1.217531 ms (FindLiveObjects: 0.294226 ms CreateObjectMapping: 0.093656 ms MarkObjects: 0.815108 ms  DeleteObjects: 0.012829 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.332142 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 2753.
+Total: 1.188878 ms (FindLiveObjects: 0.235637 ms CreateObjectMapping: 0.073984 ms MarkObjects: 0.867282 ms  DeleteObjects: 0.011119 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.498500 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 2753.
+Total: 0.777047 ms (FindLiveObjects: 0.180470 ms CreateObjectMapping: 0.056878 ms MarkObjects: 0.532001 ms  DeleteObjects: 0.006842 ms)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 4848 -> priority: 1 

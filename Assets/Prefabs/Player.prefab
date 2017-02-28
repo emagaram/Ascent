@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212388360360913632}
   - component: {fileID: 50273357021942980}
   - component: {fileID: 114642716784412940}
-  - component: {fileID: 114463671446200534}
   - component: {fileID: 61730743640573468}
   - component: {fileID: 95490516151315102}
   m_Layer: 0
@@ -280,17 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PPU: 32
---- !u!114 &114463671446200534
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1031237796283856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b539e41361d44244ca8ae57f0797d966, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!114 &114642716784412940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -302,7 +291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61da98dbbd1daaa44a889cfba03ce796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dead: 0
+  cantChange: 0
+  currentRamp: {fileID: 0}
+  isDead: 0
   animator: {fileID: 0}
   gc: {fileID: 0}
   leftSideLimit: -10
@@ -311,6 +302,7 @@ MonoBehaviour:
   attachedToLadder: 0
   originalXMoveForce: 125
   climbSpeed: 6
+  moveForce: 100
   iceMoveForce: 25
   maxHorizontalSpeed: 11.2
   jumpForce: 1050
@@ -319,21 +311,12 @@ MonoBehaviour:
   groundCheckRadius: 0.13
   grounded: 0
   touchingWall: 0
+  inputDoesntMatter: 0
   offTheIce: 0
   onIce: 0
   groundCheck: {fileID: 4577169628952320}
   sr: {fileID: 0}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 1024
-  whatIsEnemy:
-    serializedVersion: 2
-    m_Bits: 512
-  whatIsWall:
-    serializedVersion: 2
-    m_Bits: 2048
   ladderTransform: {fileID: 0}
-  originalOffset: {x: 0, y: 0}
 --- !u!114 &114794761928423628
 MonoBehaviour:
   m_ObjectHideFlags: 1

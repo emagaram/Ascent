@@ -4,27 +4,24 @@ using UnityEngine;
 
 public class StartCutScene : MonoBehaviour {
     public Transform playerTarget;
-    public Transform flyAwayTarget;
     public GameObject player;
+    private bool isFading = false;
+    public GameObject wizard;
     public SpriteRenderer dialogueBox;
     public Sprite trespassing;
+    public Sprite finalQuote;
     public Sprite begone;
     private bool startedTalking;
     public GameObject phoenix;
-    private Transform phoenixStartingPos;
-    public Transform phoenixUp;
     public bool cutSceneHasStarted;
+    public GameObject blackSquare;
     private bool phoenixAnimating = false;
-    private bool check = true;
-    private bool targetHeadNow = false;
-    private Vector3 phoenixUpPos;
-    private Vector3 phoenixPlayerPos;
+    private bool changedRotation = false;
     public float rotationAngle;
 
     void Start()
     {
         phoenix.GetComponent<Animator>().speed = 0;
-        phoenixStartingPos = phoenix.transform;
         //StartCoroutine(PhoenixAnimation());
 
     }
@@ -39,7 +36,18 @@ public class StartCutScene : MonoBehaviour {
 
     void Update()
     {
-        if(cutSceneHasStarted)
+        Physics2D.IgnoreCollision(phoenix.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
+        if (isFading)
+        {
+            Color newColor = blackSquare.GetComponent<SpriteRenderer>().color;
+            newColor.a = Mathf.Lerp(newColor.a, 1, Time.deltaTime * 1.4f);
+            blackSquare.GetComponent<SpriteRenderer>().color = newColor;
+            if (newColor.a > 0.999)
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Start");
+            }
+        }
+        if (cutSceneHasStarted)
         {
             player.GetComponent<Animator>().SetBool("cinematic", true);
             player.GetComponent<Animator>().SetBool("jumped", false);
@@ -68,8 +76,9 @@ public class StartCutScene : MonoBehaviour {
             player.GetComponentInChildren<WallCheck>().enabled = false;
             if(phoenixAnimating == true && player.transform.position.x < playerTarget.position.x)
             {
-                phoenix.transform.eulerAngles = new Vector3(0, 0, rotationAngle);
+               
                 phoenix.GetComponent<MoveOnPath>().enabled = true;
+                phoenixAnimating = false;
             }
         }
     }
@@ -89,7 +98,33 @@ public class StartCutScene : MonoBehaviour {
         phoenix.GetComponent<Animator>().speed = 1;
         yield return new WaitForSeconds(0.7f);
         phoenix.GetComponent<Animator>().Play("PhoenixFly");
+        if (changedRotation == false)
+        {
+            phoenix.transform.eulerAngles = new Vector3(0, 0, rotationAngle);
+            changedRotation = true;
+        }
         phoenixAnimating = true;
+        yield return new WaitForSeconds(8f);
+        if (wizard.transform.localScale.x < 0)
+        {
+            Vector3 localScale = wizard.transform.localScale;
+            localScale.x = Mathf.Abs(wizard.transform.localScale.x);
+            wizard.transform.localScale = localScale;
+        }
+        yield return new WaitForSeconds(2f);
+        dialogueBox.enabled = true;
+        dialogueBox.sprite = finalQuote;
+        yield return new WaitForSeconds(5f);
+        dialogueBox.enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        FindObjectOfType<CameraFollow>().enabled = false;
+        yield return new WaitForSeconds(1.4f);
+        player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        player.GetComponent<Rigidbody2D>().gravityScale = 1.2f;
+        phoenix.GetComponentInChildren<SnatchPlayer>().playerUnattached = true;
+        yield return new WaitForSeconds(1.5f);
+        isFading = true;
+
 
     }
 
