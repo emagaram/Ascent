@@ -7,8 +7,11 @@ public class BlackBar : MonoBehaviour
     public bool isUp;
     Vector2 currentVec;
     // Use this for initialization
+    //+-47 for 600
+    private float ratio;
     void Start()
     {
+        ratio = 47 / 600;
         currentVec = GetComponent<RectTransform>().anchoredPosition;
     }
 
@@ -21,12 +24,12 @@ public class BlackBar : MonoBehaviour
 
             if (isUp)
             {
-                Vector2 desiredPos = new Vector2(currentVec.x, -3f);
+                Vector2 desiredPos = new Vector2(currentVec.x, -ratio*Screen.height);
                 GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(currentVec, desiredPos, Time.deltaTime);
             }
             else
             {
-                Vector2 desiredPos = new Vector2(currentVec.x, 3f);
+                Vector2 desiredPos = new Vector2(currentVec.x, ratio * Screen.height);
                 GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(currentVec, desiredPos, Time.deltaTime);
             }
         }
