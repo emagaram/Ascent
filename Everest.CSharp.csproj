@@ -82,12 +82,14 @@
     <Compile Include="Assets\PixelPerfectCamera\Scripts\PixelSnap.cs" />
     <Compile Include="Assets\PixelPerfectCamera\Scripts\Scroller.cs" />
     <Compile Include="Assets\Scripts\Banner.cs" />
+    <Compile Include="Assets\Scripts\BlackBar.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\CameraScript.cs" />
     <Compile Include="Assets\Scripts\CantChange.cs" />
     <Compile Include="Assets\Scripts\ChangeObjectRotation.cs" />
     <Compile Include="Assets\Scripts\CheckPoint.cs" />
     <Compile Include="Assets\Scripts\EditorPath.cs" />
+    <Compile Include="Assets\Scripts\Float.cs" />
     <Compile Include="Assets\Scripts\GameMenu.cs" />
     <Compile Include="Assets\Scripts\GlobalControl.cs" />
     <Compile Include="Assets\Scripts\GroundCheck.cs" />

@@ -22,7 +22,6 @@ public class SnatchPlayer : MonoBehaviour
         if (playerAttached && playerUnattached==false)
         {
             player.transform.position = transform.position;
-            player.GetComponent<Animator>().Play("Idle");
         }
     }
     void OnTriggerEnter2D(Collider2D coll)
@@ -31,9 +30,10 @@ public class SnatchPlayer : MonoBehaviour
         {
             if (changedRotation == false)
             {
-                FindObjectOfType<CameraFollow>().player = gameObject;
                 changedRotation = true;
                 phoenix.transform.eulerAngles = new Vector3(0, 0, rotationAngle);
+                FindObjectOfType<Camera>().GetComponent<MoveOnPath>().enabled = true;
+                FindObjectOfType<Camera>().GetComponent<CameraFollow>().enabled = false;
             }
             FindObjectOfType<RiseWithPlayer>().enabled = false;
             playerAttached = true;

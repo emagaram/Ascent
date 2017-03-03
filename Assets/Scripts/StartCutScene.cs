@@ -114,6 +114,7 @@ public class StartCutScene : MonoBehaviour {
         yield return new WaitForSeconds(2f);
         dialogueBox.enabled = true;
         dialogueBox.sprite = finalQuote;
+        FindObjectOfType<Camera>().GetComponent<MoveOnPath>().enabled = false;
         yield return new WaitForSeconds(5f);
         dialogueBox.enabled = false;
         yield return new WaitForSeconds(0.5f);
