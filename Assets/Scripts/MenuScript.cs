@@ -7,6 +7,7 @@ public class MenuScript : MonoBehaviour {
     public Canvas quitMenu;
     public Button startText;
     public Button exitText;
+    public AudioClip playSound;
 	// Use this for initialization
 	void Start () {
         quitMenu = quitMenu.GetComponent<Canvas>();
@@ -38,10 +39,16 @@ public class MenuScript : MonoBehaviour {
     }
     public void StartLevel()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Everest");
+        StartCoroutine(startLev());
     }
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    IEnumerator startLev()
+    {
+        yield return new WaitForSeconds(0.8f);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Everest");
     }
 }

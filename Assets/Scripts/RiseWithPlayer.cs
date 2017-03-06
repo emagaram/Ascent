@@ -38,6 +38,6 @@ public class RiseWithPlayer : MonoBehaviour
 
     public Vector3 calculateDesiredVec()
     {
-        return new Vector3(transform.position.x, -10 + player.transform.position.y - (player.transform.position.y / 20), transform.position.z);
+        return new Vector3(transform.position.x, simpleY + player.transform.position.y - (player.transform.position.y / 20), transform.position.z);
     }
 }

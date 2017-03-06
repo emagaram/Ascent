@@ -2,6 +2,9 @@
 using System.Collections;
 public class PlayerController : MonoBehaviour
 {
+    public AudioClip landed;
+    public AudioSource jump1;
+    public AudioSource jump2;
     public bool cantChange = false;
     public Ramp currentRamp;
     public bool isDead = false;
@@ -66,6 +69,7 @@ public class PlayerController : MonoBehaviour
     // INCREASE MAX SPEED FOR ICE
     void Update()
     {
+
         if (touchingWall)
         {
             animator.SetBool("jumped", false);
@@ -154,9 +158,26 @@ public class PlayerController : MonoBehaviour
             if (touchingWall && !grounded && Input.GetKeyDown(KeyCode.Space) && Input.GetAxisRaw("Horizontal") != 0)
             {
                 didWallJump = true;
+                if (Random.value > 0.5f)
+                {
+                    jump1.Play();
+                }
+                else
+                {
+                    jump2.Play();
+                }
             }
             else if (Input.GetKeyDown(KeyCode.Space) && grounded && !attachedToLadder)
             {
+                if (Random.value > 0.5f)
+                {
+                    jump1.Play();
+                }
+                else
+                {
+                    jump2.Play();
+                }
+
                 didJump = true;
             }
 

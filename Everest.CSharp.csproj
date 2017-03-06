@@ -88,7 +88,10 @@
     <Compile Include="Assets\Scripts\CantChange.cs" />
     <Compile Include="Assets\Scripts\ChangeObjectRotation.cs" />
     <Compile Include="Assets\Scripts\CheckPoint.cs" />
+    <Compile Include="Assets\Scripts\DestroyWhenClear.cs" />
     <Compile Include="Assets\Scripts\EditorPath.cs" />
+    <Compile Include="Assets\Scripts\FadeIn.cs" />
+    <Compile Include="Assets\Scripts\FadeOut.cs" />
     <Compile Include="Assets\Scripts\Float.cs" />
     <Compile Include="Assets\Scripts\GameMenu.cs" />
     <Compile Include="Assets\Scripts\GlobalControl.cs" />
@@ -108,6 +111,7 @@
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Ramp.cs" />
     <Compile Include="Assets\Scripts\RiseWithPlayer.cs" />
+    <Compile Include="Assets\Scripts\SetSound.cs" />
     <Compile Include="Assets\Scripts\SnatchPlayer.cs" />
     <Compile Include="Assets\Scripts\SnowballShooter.cs" />
     <Compile Include="Assets\Scripts\SnowballSpawner.cs" />
@@ -121,6 +125,7 @@
     <Compile Include="Assets\Scripts\WallCheck.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\FootstepsSoundsCarpetPack\FootstepsSoundsCarpetPackInfo.txt" />
     <None Include="Assets\PixelPerfectCamera\README.txt" />
     <None Include="Assets\PixelPerfectCamera\background_art_license.txt" />
   </ItemGroup>

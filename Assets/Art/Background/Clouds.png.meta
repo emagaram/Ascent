@@ -1,11 +1,15 @@
 fileFormatVersion: 2
 guid: b5bdf898927955045b0c2dc5245c123f
-timeCreated: 1488521976
+timeCreated: 1488558759
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Cloud1
     21300002: Cloud2
+    21300004: Cloud3
+    21300006: Cloud4
+    21300008: Cloud5
+    21300010: Cloud6
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -92,6 +96,58 @@ TextureImporter:
         y: 46
         width: 505
         height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cloud3
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 104
+        width: 153
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cloud4
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 83
+        width: 60
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cloud5
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 74
+        width: 74
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cloud6
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 127
+        width: 222
+        height: 126
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

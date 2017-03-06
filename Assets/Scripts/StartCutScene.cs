@@ -44,7 +44,7 @@ public class StartCutScene : MonoBehaviour {
             blackSquare.GetComponent<SpriteRenderer>().color = newColor;
             if (newColor.a > 0.999)
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Start");
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
             }
         }
         if (cutSceneHasStarted)
