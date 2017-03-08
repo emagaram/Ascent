@@ -7,7 +7,7 @@ public class Float : MonoBehaviour
     public Transform left;
     public Transform right;
     public float speed;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     public bool goLeft;
 
     void Start()
@@ -24,6 +24,7 @@ public class Float : MonoBehaviour
                 goLeft = false;
             }
             rb.velocity = new Vector2(-speed,0);
+
         }
         else
         {

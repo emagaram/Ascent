@@ -28,6 +28,6 @@ public class GameMenu : MonoBehaviour {
     public void ExitToMainMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Start");
-        
+        Time.timeScale = 1;
     }
 }

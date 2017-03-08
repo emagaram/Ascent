@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         dontCareRoutine = DontCareTimer(0.4f);
-        Time.timeScale = 1f;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         gravityScale = rb.gravityScale;
@@ -66,9 +65,17 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(time);
         GetComponent<PolygonCollider2D>().offset = originalOffset;
     }
+    void restartLev()
+    {
+        
+    }
     // INCREASE MAX SPEED FOR ICE
     void Update()
     {
+        if (isDead)
+        {
+            StartCoroutine(FindObjectOfType<LevelManager>().RespawnPlayer(0.8f));
+        }
 
         if (touchingWall)
         {
@@ -128,7 +135,7 @@ public class PlayerController : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, 0);
             }
         }
-        if (!isDead)
+        if (true)
         {
             if (touchingWall && !grounded && Input.GetAxisRaw("Horizontal") != 0)
             {
@@ -167,7 +174,7 @@ public class PlayerController : MonoBehaviour
                     jump2.Play();
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.Space) && grounded && !attachedToLadder)
+            else if (Input.GetKeyDown(KeyCode.Space) && grounded && !attachedToLadder && Time.timeScale!=0)
             {
                 if (Random.value > 0.5f)
                 {
