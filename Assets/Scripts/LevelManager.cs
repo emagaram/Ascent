@@ -32,6 +32,7 @@ public class LevelManager : MonoBehaviour
         player.inputDoesntMatter = true;
         yield return new WaitForSeconds(time);
         GlobalControl.Instance.timeAtRestart = Time.time;
+        GlobalControl.Instance.timesDied++;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Everest");
 
     }

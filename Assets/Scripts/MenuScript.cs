@@ -42,9 +42,20 @@ public class MenuScript : MonoBehaviour {
         Application.Quit();
     }
 
+    public void StartCredits()
+    {
+        StartCoroutine(startCred());
+    }
+
     IEnumerator startLev()
     {
         yield return new WaitForSeconds(0.8f);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Everest");
+    }
+
+    IEnumerator startCred()
+    {
+        yield return new WaitForSeconds(0.8f);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
     }
 }

@@ -40,9 +40,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 originalOffset;
     private IEnumerator dontCareRoutine;
+    private IEnumerator aboutToFreezeRoutine;
 
     void Awake()
     {
+        aboutToFreezeRoutine = aboutToFreeze();
         dontCareRoutine = DontCareTimer(0.4f);
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -65,9 +67,10 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(time);
         GetComponent<PolygonCollider2D>().offset = originalOffset;
     }
-    void restartLev()
+    IEnumerator aboutToFreeze()
     {
-        
+        yield return new WaitForSeconds(0.1f);
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
     // INCREASE MAX SPEED FOR ICE
     void Update()
@@ -79,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
         if (touchingWall)
         {
-            animator.SetBool("jumped", false);
+            //animator.SetBool("jumped", false);
         }
         animator.SetBool("touchingWall", touchingWall);
 
@@ -87,10 +90,13 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetAxisRaw("Horizontal")==0 && !onIce && !offTheIce && !Input.GetKeyDown(KeyCode.Space) && !didJump && grounded && !isWallJumping && !animator.GetBool("wallSliding") && !isDead)
         {
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            
+            StartCoroutine(aboutToFreezeRoutine);
         }
         else if(!isDead)
         {
+            StopCoroutine(aboutToFreezeRoutine);
+            aboutToFreezeRoutine = aboutToFreeze();
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
         animator.SetBool("attachedToLadder", attachedToLadder);
