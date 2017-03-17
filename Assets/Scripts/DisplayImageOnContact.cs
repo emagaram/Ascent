@@ -4,17 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class DisplayImageOnContact : MonoBehaviour {
-    public Image image;
+    public GameObject obj;
     private bool playerContact;
 	// Use this for initialization
 	void Update () {
         if (playerContact)
         {
-            image.gameObject.SetActive(true);
+            obj.gameObject.SetActive(true);
         }
         else
         {
-            image.gameObject.SetActive(false);
+            obj.gameObject.SetActive(false);
         }
 	}
     void OnTriggerEnter2D(Collider2D coll)

@@ -34,7 +34,6 @@ public class LevelManager : MonoBehaviour
         GlobalControl.Instance.timeAtRestart = Time.time;
         GlobalControl.Instance.timesDied++;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Everest");
-
     }
 
 }

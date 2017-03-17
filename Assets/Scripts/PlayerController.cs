@@ -90,7 +90,6 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetAxisRaw("Horizontal")==0 && !onIce && !offTheIce && !Input.GetKeyDown(KeyCode.Space) && !didJump && grounded && !isWallJumping && !animator.GetBool("wallSliding") && !isDead)
         {
-            
             StartCoroutine(aboutToFreezeRoutine);
         }
         else if(!isDead)
@@ -101,8 +100,7 @@ public class PlayerController : MonoBehaviour
         }
         animator.SetBool("attachedToLadder", attachedToLadder);
         if (attachedToLadder)
-        {
-            
+        { 
             if (Input.GetAxisRaw("Horizontal") != 0)
             {
                 if (Input.GetAxisRaw("Horizontal") > 0 && !facingRight)
@@ -141,10 +139,9 @@ public class PlayerController : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, 0);
             }
         }
-        if (true)
-        {
-            if (touchingWall && !grounded && Input.GetAxisRaw("Horizontal") != 0)
+            if (touchingWall && !grounded)
             {
+                rb.velocity = new Vector2(0, rb.velocity.y);
                 if (rb.velocity.magnitude < 0.02f&&animator.GetBool("wallSliding"))
                 {
                     rb.velocity = new Vector2(0, rb.velocity.y);
@@ -168,7 +165,7 @@ public class PlayerController : MonoBehaviour
             {
                 moveForce = originalXMoveForce;
             }
-            if (touchingWall && !grounded && Input.GetKeyDown(KeyCode.Space) && Input.GetAxisRaw("Horizontal") != 0)
+            if (touchingWall && !grounded && Input.GetKeyDown(KeyCode.Space))
             {
                 didWallJump = true;
                 if (Random.value > 0.5f)
@@ -223,7 +220,6 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                 }
-            }
             else
             {
                 attachedToLadder = false;

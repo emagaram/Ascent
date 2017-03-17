@@ -125,8 +125,8 @@ public class StartCutScene : MonoBehaviour {
         phoenix.GetComponentInChildren<SnatchPlayer>().playerUnattached = true;
         yield return new WaitForSeconds(1.5f);
         isFading = true;
-
-
+        PlayerPrefs.SetInt("deaths", GlobalControl.Instance.timesDied);
+        PlayerPrefs.SetInt("beatGame", 1);
     }
 
 }

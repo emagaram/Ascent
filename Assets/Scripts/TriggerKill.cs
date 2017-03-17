@@ -12,11 +12,11 @@ public class TriggerKill : MonoBehaviour {
         }
     }
 
-    void OnTriggerStay2D(Collider2D coll)
-    {
-        if (coll.gameObject.tag == "Player")
-        {
-            StartCoroutine(FindObjectOfType<LevelManager>().RespawnPlayer(1));
-        }
-    }
+    //void OnTriggerStay2D(Collider2D coll)
+    //{
+    //    if (coll.gameObject.tag == "Player")
+    //    {
+    //        StartCoroutine(FindObjectOfType<LevelManager>().RespawnPlayer(1));
+    //    }
+    //}
 }
